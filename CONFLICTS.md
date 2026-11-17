@@ -49,3 +49,17 @@ Nox identity. It's recorded here so a future reader of this file doesn't
 mistake xcamp-companion's teal dark mode for tokens.json drift. See
 xcamp-companion's `src/styles.css` (the `AMENDMENT` comment above its
 `.dark {}` block) for the actual override values.
+
+## 3. Check-in uses its own look — APP-LEVEL OVERRIDE (2026-11-17)
+App: `Xchange-Ecosystems/checkin-app` (health vertical, backend in health-backend `projects/jesund`).
+Rule it departs from: "All UI must use xcamp-designsystem exclusively" (`.claude/CLAUDE.md`) and
+health-backend `docs/architecture/06-frontend-kit.md` ("apps never define colours").
+Decision (Fabian, 2026-11-17): Check-in keeps the look of its approved prototype on the design canvas —
+black / warm off-white surfaces, Onest + Outfit, and four aspect palettes (body red, mind yellow,
+emotions blue, connection violet) with five tones each and playful/plain/pastel variants — instead of
+the Xcamp teal / Nox purple tokens.
+Where it lives: `checkin-app/src/ui/tokens.css` and `src/ui/aspects.ts`, the app's single colour source;
+components there never hard-code colours, so swapping to design-system tokens later is a change to
+those two files.
+This is not a change to `tokens.json` and not drift. Open question for later: whether the health apps
+(Check-in, Jesund) get their own skin in this design system, with Check-in's tokens as its first source.
